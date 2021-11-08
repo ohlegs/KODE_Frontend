@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar.jsx";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const axios = require("axios").default;
+  axios
+    .get(
+      "https://stoplight.io/mocks/kode-education/trainee-test/25143926/users",
+      {
+        title: "Title of post",
+        body: "Body of post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    )
+    .then((response) => console.log(response.data.items))
+    .catch((error) => console.log(error));
+
+  return <div className='app'>{<Navbar />}</div>;
 }
 
 export default App;

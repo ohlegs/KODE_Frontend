@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper_input_box_description {
+  margin: 8px 12px 0 24px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input_box-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 18px 16px 0 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.input_box_input {
+  width: 100%;
+  border: none;
+  border-radius: 16px 0 0 16px;
+  height: 40px;
+  background: #f7f7f8;
+  color: #c3c3c6;
+  /* padding:10px; */
+  background-image: url("./img/lens.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 13px;
+  text-indent: 44px;
+  caret-color: #6534ff;
+  outline: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input_box_input:focus {
+  background-image: url("./img/lens-focus.svg");
+  transition: 0.5s;
+  color: #000;
+  cursor: text;
+}
+
+.input_box_buttonSort {
+  border: none;
+  height: 40px;
+  width: 40px;
+  background-image: url("./img/filter-img.svg");
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  padding: 14px;
+  background-color: #f7f7f8;
+  cursor: pointer;
+  border-radius: 0 16px 16px 0;
+}
+.links_components {
+  /* padding-left: 4px; */
+  border-bottom: 1px solid #c3c3c6;
+  margin-bottom: 8px;
+}
+
+.links_components ul {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  margin-top: 22px;
+  margin-left: 16px;
+}
+
+.links_components ul li {
+}
+
+.links_components ul li a {
+  text-decoration: none;
+  color: #97979b;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 0 12px;
+}
+
+.is-active {
+  color: #6534ff;
 }
