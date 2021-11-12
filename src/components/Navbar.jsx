@@ -20,6 +20,7 @@ import Crash from "./FalsePage/Crash";
 function Navbar({ responseResult }) {
   const checked = () => (responseResult === "error" ? <Crash /> : "");
   const [modalActive, setModalActive] = useState(false);
+  console.log(responseResult);
   return (
     <div>
       <div className='wrapper_input_box'>
@@ -70,233 +71,61 @@ class Links extends React.Component {
     super(props);
   }
   render() {
+    const arrTo = [
+      "/All",
+      "/Designers",
+      "/Analysts",
+      "/iOS",
+      "/Android",
+      "/Backend",
+      "/Frontend",
+      "/BackOffice",
+      "/Hr",
+      "/Pr",
+      "/Qa",
+      "/Managers",
+      "/Support",
+    ];
+    const arrNameTabs = [
+      "Все",
+      "Дизайн",
+      "Аналитика",
+      "IOS",
+      "Android",
+      "Frontend",
+      "Backend",
+      "Бэк-офис",
+      "HR",
+      "PR",
+      "QA",
+      "Менеджмент",
+      "Техподдержка",
+    ];
+    const createTabs = arrTo.map((currentValue, i) => {
+      return (
+        <li key={i}>
+          <NavLink
+            to={`${currentValue}`}
+            style={({ isActive }) => {
+              return {
+                display: "block",
+                borderColor: isActive ? " #6534FF" : "",
+                borderBottomStyle: isActive ? "solid" : "",
+                paddingBottom: isActive ? "8px" : "",
+                paddingLeft: isActive ? "12px" : "",
+                paddingRight: isActive ? "12px" : "",
+              };
+            }}
+          >
+            {`${arrNameTabs[i]}`}
+          </NavLink>
+        </li>
+      );
+    });
+
     return (
       <div className='links_components'>
-        <ul>
-          <li>
-            <NavLink
-              to={"/All"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Все
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Designers"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Дизайн
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Analysts"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  // paddingLeft: isActive ? "12px" : "",
-                  // paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Аналитика
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/iOS"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              iOS
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Android"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Android
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Frontend"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Frontend
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Backend"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Backend
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/BackOffice"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Бэк-офис
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Hr"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              HR
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to={"/Pr"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              PR
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to={"/Qa"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              QA
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Managers"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Менеджмент
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/Support"}
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  borderColor: isActive ? " #6534FF" : "",
-                  borderBottomStyle: isActive ? "solid" : "",
-                  paddingBottom: isActive ? "8px" : "",
-                  paddingLeft: isActive ? "12px" : "",
-                  paddingRight: isActive ? "12px" : "",
-                };
-              }}
-            >
-              Техподдержка
-            </NavLink>
-          </li>
-        </ul>
+        <ul>{createTabs}</ul>
       </div>
     );
   }
