@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.crashPage {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+}
+
+.crashPage_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  margin-top: 12.3%;
+}
+
+.crashPage_content_img {
+  background-image: url("./img/ufo.svg");
+  width: 56px;
+  height: 56px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.crashPage_content_boldText {
+  margin-top: 8px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  color: #000;
+}
+
+.crashPage_content_lightText {
+  margin-top: 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #97979b;
+}
+
+.crashPage_content_refreshPage {
+  margin-top: 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #6534ff;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
