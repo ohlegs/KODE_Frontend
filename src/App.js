@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Crash from "./components/FalsePage/Crash";
@@ -8,6 +8,7 @@ class App extends React.Component {
     super();
     this.state = {
       responseResult: null,
+      statusCode: null,
     };
   }
   render() {
@@ -25,7 +26,6 @@ class App extends React.Component {
       )
       .then((response) => {
         const objAll = {};
-
         for (const key in response.data.items) {
           objAll[`${response.data.items[key].id}`] = {
             url: response.data.items[key].avatarUrl,
@@ -38,13 +38,17 @@ class App extends React.Component {
             department: response.data.items[key].department,
           };
         }
-        this.setState({ responseResult: objAll });
+        this.setState({ responseResult: objAll, statusCode: response.status });
+        // this.setState({ statusCode: response.status} );
       })
       .catch((error) => this.setState({ responseResult: "error" }));
 
     return (
       <div className='root'>
-        <Navbar responseResult={this.state.responseResult} />
+        <Navbar
+          responseResult={this.state.responseResult}
+          statusCode={this.state.statusCode}
+        />
       </div>
     );
   }

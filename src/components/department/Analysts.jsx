@@ -1,9 +1,11 @@
 import React from "react";
-
-
 class Analysts extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
   render() {
-    return <div>Analysts</div>;
+    return <div></div>;
   }
 }
 

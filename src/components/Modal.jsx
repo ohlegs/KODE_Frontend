@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App.css";
-const Modal = ({ active, setActive }) => {
-  const [input, setInput] = useState("sort_abc");
-  const onRadioChange = (event) => {
-    setInput(event.target.value);
-  };
+import Navbar from "./Navbar";
+const Modal = (props) => {
+  const { active, setActive, updateData } = props;
+  const [sortingMode, setSortingMode] = useState("sort_abc");
+  // const onRadioChange = (event) => {
+  //   setSortingMode(event.target.value);
+  // };
+  updateData(sortingMode);
   return (
     <div
       onClick={() => setActive(false)}
@@ -26,9 +29,12 @@ const Modal = ({ active, setActive }) => {
                 <input
                   name='sort'
                   type='radio'
-                  value={"sort_abc"}
-                  checked={input === "sort_abc"}
-                  onChange={onRadioChange}
+                  onClick={() => {
+                    setSortingMode("sort_abc");
+                  }}
+                  // checked={sortingMode === "sort_abc"}
+                  defaultChecked={true}
+                  // onChange={onRadioChange}
                 />
                 По алфавиту
               </label>
@@ -38,8 +44,10 @@ const Modal = ({ active, setActive }) => {
                 <input
                   name='sort'
                   type='radio'
-                  value={"sort_123"}
-                  onChange={onRadioChange}
+                  onClick={() => {
+                    setSortingMode("sort_123");
+                  }}
+                  // onChange={onRadioChange}
                 />
                 По дате рождения
               </label>

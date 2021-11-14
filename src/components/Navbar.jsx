@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
+
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Analysts from "./department/Analysts";
 import Android from "./department/Android";
@@ -17,10 +19,82 @@ import Modal from "./Modal";
 import All from "./department/All";
 import NotFound from "./FalsePage/NotFound";
 import Crash from "./FalsePage/Crash";
-function Navbar({ responseResult }) {
-  const checked = () => (responseResult === "error" ? <Crash /> : "");
-  const [modalActive, setModalActive] = useState(false);
-  console.log(responseResult);
+function Navbar({ responseResult, statusCode, sortingMode }) {
+  const checked = () =>
+    responseResult === "error" || statusCode === "500" ? <Crash /> : "";
+  const [modalActive, setModalActive] = useState();
+  const [inputValue, setInputValue] = useState();
+  let a;
+  const [modeSort, setModeSort] = useState();
+  const updateData = (value) => {
+  
+    setModeSort(value)
+
+  };
+
+  const all = [];
+  const designers = [];
+  const analysts = [];
+  const ios = [];
+  const android = [];
+  const backend = [];
+  const frontend = [];
+  const backOffice = [];
+  const hr = [];
+  const pr = [];
+  const qa = [];
+  const managers = [];
+  const support = [];
+  for (const key in responseResult) {
+    switch (true) {
+      case responseResult[key].department === "design":
+        designers.push(responseResult);
+        break;
+      case responseResult[key].department === "analytics":
+        analysts.push(responseResult);
+
+        break;
+      case responseResult[key].department === "ios":
+        ios.push(responseResult);
+
+        break;
+      case responseResult[key].department === "android":
+        android.push(responseResult);
+
+        break;
+      case responseResult[key].department === "backend":
+        backend.push(responseResult);
+
+        break;
+      case responseResult[key].department === "frontend":
+        frontend.push(responseResult);
+
+        break;
+      case responseResult[key].department === "back_office":
+        backOffice.push(responseResult);
+
+        break;
+      case responseResult[key].department === "hr":
+        hr.push(responseResult);
+        break;
+      case responseResult[key].department === "pr":
+        pr.push(responseResult);
+
+        break;
+      case responseResult[key].department === "qa":
+        qa.push(responseResult);
+
+        break;
+      case responseResult[key].department === "management":
+        managers.push(responseResult);
+
+        break;
+      case responseResult[key].department === "support":
+        support.push(responseResult);
+        break;
+    }
+  }
+
   return (
     <div>
       <div className='wrapper_input_box'>
@@ -31,7 +105,8 @@ function Navbar({ responseResult }) {
             className='input_box_input'
             type='text'
             onChange={(event) => {
-              document.title = event.target.value ? event.target.value : "lol";
+              setInputValue(event.target.value);
+
               // console.log(event.target.value);
             }}
           />
@@ -45,23 +120,45 @@ function Navbar({ responseResult }) {
         <Links />
         {checked()}
         <Routes>
-          <Route path='' element={<Crash />} />
-          <Route path='/All' element={<All />} />
-          <Route path='/Managers' element={<Managers />} />
-          <Route path='/Designers' element={<Designers />} />
-          <Route path='/Analysts' element={<Analysts />} />
-          <Route path='/IOS' element={<IOS />} />
-          <Route path='/Android' element={<Android />} />
-          <Route path='/Frontend' element={<FrontEnd />} />
-          <Route path='/Backend' element={<Backend />} />
-          <Route path='/BackOffice' element={<BackOffice />} />
-          <Route path='/PR' element={<Pr />} />
-          <Route path='/QA' element={<Qa />} />
-          <Route path='/Support' element={<Support />} />
-          <Route path='/Hr' element={<Hr />} />
+          <Route
+            path=''
+            element={<Crash data={responseResult} statusCode={statusCode} />}
+          />
+          <Route
+            path='/All'
+            element={
+              <All
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Managers'
+            element={<Managers data={managers} sortingMode={modeSort} />}
+          />
+          <Route path='/Designers' element={<Designers data={designers} />} />
+          <Route path='/Analysts' element={<Analysts data={analysts} />} />
+          <Route path='/IOS' element={<IOS data={ios} />} />
+          <Route path='/Android' element={<Android data={android} />} />
+          <Route path='/Frontend' element={<FrontEnd data={frontend} />} />
+          <Route path='/Backend' element={<Backend data={backend} />} />
+          <Route
+            path='/BackOffice'
+            element={<BackOffice date={backOffice} />}
+          />
+          <Route path='/PR' element={<Pr date={pr} />} />
+          <Route path='/QA' element={<Qa date={qa} />} />
+          <Route path='/Support' element={<Support date={support} />} />
+          <Route path='/Hr' element={<Hr date={hr} />} />
         </Routes>
       </BrowserRouter>
-      <Modal active={modalActive} setActive={setModalActive} />
+      <Modal
+        active={modalActive}
+        setActive={setModalActive}
+        updateData={updateData}
+      />
     </div>
   );
 }
