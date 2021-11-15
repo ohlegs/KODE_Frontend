@@ -2,9 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
-
+import NotFound from "../FalsePage/NotFound";
 export default function All(props) {
   const { data, inputValue, sortingMode } = props;
+  // console.log(data);
   let arr = [];
   let sortArr = [];
   let variable = [];
@@ -13,16 +14,15 @@ export default function All(props) {
       arr.push(data[key]);
     }
   }
-
-  if (inputValue && inputValue.length == 2) {
-     if(typeof inputValue == "string") {
-       variable = arr.filter((item,index)=>{
-        return item.nameFirst.includes(inputValue)
-       })
-       arr = variable
-      }
-
+console.log(arr);
+  if (inputValue && inputValue.length >= 2) {
+    if (typeof inputValue == "string") {
+      variable = arr.filter((item, index) => {
+        return item.nameFirst.includes(inputValue);
+      });
+      arr = variable;
     }
+  }
 
   if (sortingMode == "sort_abc") {
     function SortArray(x, y) {
@@ -47,13 +47,24 @@ export default function All(props) {
     return (
       <ul key={index}>
         <li>
-          {/* <p>{`${item.nameFirst} ${item.nameLase}`}</p> */}
-          {/* <p>{}</p> */}
-          <p>{item.nameFirst}</p>
+          <div className='employee'>
+            <img
+              src={item.url}
+              // onError='../../img/Rectangle\191.png'
+              className='employee_img'
+            />
+            <div className='employee_text'>
+              <p>{`${item.nameFirst} ${item.nameLase}`}</p>
+              <p className='employee_department'>
+                {item.department.charAt(0).toUpperCase() +
+                  item.department.slice(1).replaceAll("_", " ")}
+              </p>
+            </div>
+          </div>
         </li>
       </ul>
     );
   });
 
-  return <div>{result}</div>;
+  return <div>{result.length > 0 ? result : <NotFound />}</div>;
 }

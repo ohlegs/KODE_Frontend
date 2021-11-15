@@ -8,7 +8,9 @@ const Modal = (props) => {
   // const onRadioChange = (event) => {
   //   setSortingMode(event.target.value);
   // };
-  updateData(sortingMode);
+  useEffect(() => {
+    updateData(sortingMode);
+  }, [sortingMode]);
   return (
     <div
       onClick={() => setActive(false)}

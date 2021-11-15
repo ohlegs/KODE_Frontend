@@ -192,7 +192,7 @@
   border-radius: 50px;
   width: 72px;
   height: 72px;
-margin-left: 16px;
+  margin-left: 16px;
 }
 
 .loadMask_wrapper_text {
@@ -209,10 +209,9 @@ margin-left: 16px;
   margin-top: 6px;
   width: 80px;
   height: 12px;
-  
+
   border-radius: 50px;
 }
-
 
 .animGradient {
   background: linear-gradient(270deg, #f3f3f6, #fafafa);
@@ -224,17 +223,66 @@ margin-left: 16px;
 }
 
 @-webkit-keyframes AnimationName {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @-moz-keyframes AnimationName {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @keyframes AnimationName {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.employee {
+  display: flex;
+  align-items: center;
+  padding-top: 22px;
+  padding-left: 16px;
+}
+
+.employee_img {
+  width: 72px;
+  height: 72px;
+  border-radius: 55px;
+}
+
+.employee_text {
+  margin-left: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+}
+
+.employee_department {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
 }

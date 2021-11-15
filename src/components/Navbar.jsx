@@ -20,6 +20,10 @@ import All from "./department/All";
 import NotFound from "./FalsePage/NotFound";
 import Crash from "./FalsePage/Crash";
 function Navbar({ responseResult, statusCode, sortingMode }) {
+  // console.log(responseResult);
+  //   for (const key in responseResult) {
+  // console.log(responseResult[key].url);
+  //   }
   const checked = () =>
     responseResult === "error" || statusCode === "500" ? <Crash /> : "";
   const [modalActive, setModalActive] = useState();
@@ -27,73 +31,71 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
   let a;
   const [modeSort, setModeSort] = useState();
   const updateData = (value) => {
-  
-    setModeSort(value)
-
+    setModeSort(value);
   };
 
-  const all = [];
-  const designers = [];
-  const analysts = [];
-  const ios = [];
-  const android = [];
-  const backend = [];
-  const frontend = [];
-  const backOffice = [];
-  const hr = [];
-  const pr = [];
-  const qa = [];
-  const managers = [];
-  const support = [];
-  for (const key in responseResult) {
-    switch (true) {
-      case responseResult[key].department === "design":
-        designers.push(responseResult);
-        break;
-      case responseResult[key].department === "analytics":
-        analysts.push(responseResult);
+  // const all = [];
+  // const designers = [];
+  // const analysts = [];
+  // const ios = [];
+  // const android = [];
+  // const backend = [];
+  // const frontend = [];
+  // const backOffice = [];
+  // const hr = [];
+  // const pr = [];
+  // const qa = [];
+  // const managers = [];
+  // const support = [];
+  // for (const key in responseResult) {
+  //   switch (true) {
+  //     case responseResult[key].department === "design":
+  //       designers.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "analytics":
+  //       analysts.push(responseResult);
 
-        break;
-      case responseResult[key].department === "ios":
-        ios.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "ios":
+  //       ios.push(responseResult);
 
-        break;
-      case responseResult[key].department === "android":
-        android.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "android":
+  //       android.push(responseResult);
 
-        break;
-      case responseResult[key].department === "backend":
-        backend.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "backend":
+  //       backend.push(responseResult);
 
-        break;
-      case responseResult[key].department === "frontend":
-        frontend.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "frontend":
+  //       frontend.push(responseResult);
 
-        break;
-      case responseResult[key].department === "back_office":
-        backOffice.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "back_office":
+  //       backOffice.push(responseResult);
 
-        break;
-      case responseResult[key].department === "hr":
-        hr.push(responseResult);
-        break;
-      case responseResult[key].department === "pr":
-        pr.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "hr":
+  //       hr.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "pr":
+  //       pr.push(responseResult);
 
-        break;
-      case responseResult[key].department === "qa":
-        qa.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "qa":
+  //       qa.push(responseResult);
 
-        break;
-      case responseResult[key].department === "management":
-        managers.push(responseResult);
+  //       break;
+  //     case responseResult[key].department === "management":
+  //       managers.push(responseResult);
 
-        break;
-      case responseResult[key].department === "support":
-        support.push(responseResult);
-        break;
-    }
-  }
+  //       break;
+  //     case responseResult[key].department === "support":
+  //       support.push(responseResult);
+  //       break;
+  //   }
+  // }
 
   return (
     <div>
@@ -136,22 +138,127 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
           />
           <Route
             path='/Managers'
-            element={<Managers data={managers} sortingMode={modeSort} />}
+            element={
+              <Managers
+                data={responseResult}
+                sortingMode={modeSort}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
           />
-          <Route path='/Designers' element={<Designers data={designers} />} />
-          <Route path='/Analysts' element={<Analysts data={analysts} />} />
-          <Route path='/IOS' element={<IOS data={ios} />} />
-          <Route path='/Android' element={<Android data={android} />} />
-          <Route path='/Frontend' element={<FrontEnd data={frontend} />} />
-          <Route path='/Backend' element={<Backend data={backend} />} />
+          <Route
+            path='/Designers'
+            element={
+              <Designers
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Analysts'
+            element={
+              <Analysts
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/IOS'
+            element={
+              <IOS
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Android'
+            element={
+              <Android
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Frontend'
+            element={
+              <FrontEnd
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Backend'
+            element={
+              <Backend
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          />
           <Route
             path='/BackOffice'
-            element={<BackOffice date={backOffice} />}
+            element={
+              <BackOffice
+              data={responseResult}
+              inputValue={inputValue}
+              sortingMode={modeSort}
+
+              />
+            }
           />
-          <Route path='/PR' element={<Pr date={pr} />} />
-          <Route path='/QA' element={<Qa date={qa} />} />
-          <Route path='/Support' element={<Support date={support} />} />
-          <Route path='/Hr' element={<Hr date={hr} />} />
+          <Route
+            path='/PR'
+            element={
+              <Pr
+              data={responseResult}
+              inputValue={inputValue}
+              sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/QA'
+            element={
+              <Qa
+              data={responseResult}
+              inputValue={inputValue}
+              sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+            path='/Support'
+            element={
+              <Support
+              data={responseResult}
+              inputValue={inputValue}
+              sortingMode={modeSort}
+              />
+            }
+          />
+          <Route
+
+            path='/Hr'
+            element={
+              <Hr
+              data={responseResult}
+              inputValue={inputValue}
+              sortingMode={modeSort}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
       <Modal
@@ -174,8 +281,8 @@ class Links extends React.Component {
       "/Analysts",
       "/iOS",
       "/Android",
-      "/Backend",
       "/Frontend",
+      "/Backend",
       "/BackOffice",
       "/Hr",
       "/Pr",
