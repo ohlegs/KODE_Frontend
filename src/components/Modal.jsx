@@ -32,7 +32,10 @@ const Modal = (props) => {
                   name='sort'
                   type='radio'
                   onClick={() => {
-                    setSortingMode("sort_abc");
+                    {
+                      setSortingMode("sort_abc");
+                      setActive(false);
+                    }
                   }}
                   // checked={sortingMode === "sort_abc"}
                   defaultChecked={true}
@@ -47,7 +50,10 @@ const Modal = (props) => {
                   name='sort'
                   type='radio'
                   onClick={() => {
-                    setSortingMode("sort_123");
+                    {
+                      setSortingMode("sort_123");
+                      setActive(false);
+                    }
                   }}
                   // onChange={onRadioChange}
                 />

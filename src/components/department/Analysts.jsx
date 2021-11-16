@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  Link,
+  Switch,
+} from "react-router-dom";
 export default function Analytics(props) {
   const { data, inputValue, sortingMode } = props;
   let arr = [];
@@ -62,7 +69,9 @@ export default function Analytics(props) {
               className='employee_img'
             />
             <div className='employee_text'>
-              <p>{`${item.nameFirst} ${item.nameLase}`}</p>
+            <Link
+              to={`/EmployeeFirm/${item.nameFirst}:${item.nameLase}`}
+            >{`${item.nameFirst} ${item.nameLase}`}</Link>
               <p className='employee_department'>
                 {" "}
                 {item.department.charAt(0).toUpperCase() +

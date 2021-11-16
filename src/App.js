@@ -1,7 +1,10 @@
 // import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import EmployeeFirm from "./components/department/EmployeeFirm";
 import Crash from "./components/FalsePage/Crash";
+import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
+
 import Navbar from "./components/Navbar.jsx";
 class App extends React.Component {
   constructor() {

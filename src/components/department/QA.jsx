@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  Link,
+  Switch,
+} from "react-router-dom";
 
 export default function BackOffice(props) {
   const { data, inputValue, sortingMode } = props;
@@ -61,8 +69,9 @@ export default function BackOffice(props) {
               className='employee_img'
             />
             <div className='employee_text'>
-              <p>{`${item.nameFirst} ${item.nameLase}`}</p>
-              <p className='employee_department'>                {item.department.charAt(0).toUpperCase() +
+            <Link
+              to={`/EmployeeFirm/${item.nameFirst}:${item.nameLase}`}
+            >{`${item.nameFirst} ${item.nameLase}`}</Link>              <p className='employee_department'>                {item.department.charAt(0).toUpperCase() +
                   item.department.slice(1).replaceAll("_", " ")}
 </p>
             </div>

@@ -1,11 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  Link,
+  Switch,
+} from "react-router-dom";
 import NotFound from "../FalsePage/NotFound";
+import EmployeeFirm from "./EmployeeFirm";
 export default function All(props) {
   const { data, inputValue, sortingMode } = props;
-  // console.log(data);
   let arr = [];
   let sortArr = [];
   let variable = [];
@@ -14,7 +21,6 @@ export default function All(props) {
       arr.push(data[key]);
     }
   }
-console.log(arr);
   if (inputValue && inputValue.length >= 2) {
     if (typeof inputValue == "string") {
       variable = arr.filter((item, index) => {
@@ -42,29 +48,32 @@ console.log(arr);
       return new Date(a.birthday) - new Date(b.birthday);
     });
   }
-
   const result = sortArr.map((item, index) => {
     return (
-      <ul key={index}>
-        <li>
-          <div className='employee'>
-            <img
-              src={item.url}
-              // onError='../../img/Rectangle\191.png'
-              className='employee_img'
-            />
-            <div className='employee_text'>
-              <p>{`${item.nameFirst} ${item.nameLase}`}</p>
-              <p className='employee_department'>
-                {item.department.charAt(0).toUpperCase() +
-                  item.department.slice(1).replaceAll("_", " ")}
-              </p>
-            </div>
+      <li key={index}>
+        <div className='employee'>
+          <img
+            src={item.url}
+            // onError='../../img/Rectangle\191.png'
+            className='employee_img'
+          />
+          <div className='employee_text'>
+            <Link
+              to={`/EmployeeFirm/${item.nameFirst}:${item.nameLase}`}
+            >{`${item.nameFirst} ${item.nameLase}`}</Link>
+            <p className='employee_department'>
+              {item.department.charAt(0).toUpperCase() +
+                item.department.slice(1).replaceAll("_", " ")}
+            </p>
           </div>
-        </li>
-      </ul>
+        </div>
+      </li>
     );
   });
 
-  return <div>{result.length > 0 ? result : <NotFound />}</div>;
+  return (
+    <div>
+      <ul>{result.length > 0 ? result : <NotFound />}</ul>
+    </div>
+  );
 }

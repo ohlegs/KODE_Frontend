@@ -2,7 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  Switch,
+} from "react-router-dom";
 import Analysts from "./department/Analysts";
 import Android from "./department/Android";
 import Designers from "./department/Designers";
@@ -19,6 +25,7 @@ import Modal from "./Modal";
 import All from "./department/All";
 import NotFound from "./FalsePage/NotFound";
 import Crash from "./FalsePage/Crash";
+import EmployeeFirm from "./department/EmployeeFirm";
 function Navbar({ responseResult, statusCode, sortingMode }) {
   // console.log(responseResult);
   //   for (const key in responseResult) {
@@ -126,6 +133,19 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
             path=''
             element={<Crash data={responseResult} statusCode={statusCode} />}
           />
+          {/* 
+          <Route
+            exact
+            path='/'
+            element={
+              <All
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
+              />
+            }
+          /> */}
+
           <Route
             path='/All'
             element={
@@ -211,10 +231,9 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
             path='/BackOffice'
             element={
               <BackOffice
-              data={responseResult}
-              inputValue={inputValue}
-              sortingMode={modeSort}
-
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
               />
             }
           />
@@ -222,9 +241,9 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
             path='/PR'
             element={
               <Pr
-              data={responseResult}
-              inputValue={inputValue}
-              sortingMode={modeSort}
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
               />
             }
           />
@@ -232,9 +251,9 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
             path='/QA'
             element={
               <Qa
-              data={responseResult}
-              inputValue={inputValue}
-              sortingMode={modeSort}
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
               />
             }
           />
@@ -242,23 +261,23 @@ function Navbar({ responseResult, statusCode, sortingMode }) {
             path='/Support'
             element={
               <Support
-              data={responseResult}
-              inputValue={inputValue}
-              sortingMode={modeSort}
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
               />
             }
           />
           <Route
-
             path='/Hr'
             element={
               <Hr
-              data={responseResult}
-              inputValue={inputValue}
-              sortingMode={modeSort}
+                data={responseResult}
+                inputValue={inputValue}
+                sortingMode={modeSort}
               />
             }
           />
+          <Route path='EmployeeFirm/:info' element={<EmployeeFirm />} />
         </Routes>
       </BrowserRouter>
       <Modal
@@ -305,6 +324,7 @@ class Links extends React.Component {
       "Менеджмент",
       "Техподдержка",
     ];
+
     const createTabs = arrTo.map((currentValue, i) => {
       return (
         <li key={i}>

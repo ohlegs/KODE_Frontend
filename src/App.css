@@ -276,7 +276,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-
 }
 
 .employee_department {
@@ -285,4 +284,109 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 16px;
+}
+
+.employeeFirm_wrapper {
+  top: 0;
+  position: absolute;
+  z-index: 50px;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.employeeFirm {
+  /* display: flex;
+  justify-content: center; */
+  width: 100%;
+}
+.employeeFirm div {
+  /* margin-top: -30px ; */
+  padding-top: 29.76px;
+  background: #f7f7f8;
+}
+.employeeFirm_description {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.employeeFirm_button {
+  margin: 0 0 0 32px;
+  display: block;
+  /* margin-top: 29.76px; */
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-image: url("./img/arrow.svg");
+}
+
+.employeeFirm_description_boldText {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 24px;
+}
+
+.employeeFirm_description_liteText {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555c;
+  margin-top: 12px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.employeeFirm_description img {
+  width: 104px;
+  border-radius: 64px;
+  height: 104px;
+}
+
+.employeeFirm_description_date {
+  display: flex;
+  margin-top: 27px;
+}
+
+.employeeFirm_description_date div {
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("./img/star.svg");
+  margin-left: 16.01px;
+  margin-right: 13.97px;
+}
+
+.employeeFirm_description_number {
+  display: flex;
+  margin-top: 48px;
+}
+
+.employeeFirm_description_number div {
+  height: 19.93px;
+  width: 19.87px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("./img/telephone.svg");
+  margin-left: 16.01px;
+  margin-right: 14.09px;
+}
+
+a{
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
 }
