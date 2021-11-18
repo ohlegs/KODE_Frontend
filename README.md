@@ -1,15 +1,19 @@
-# Тестовое задание KODE_Front-end.
+** Описание задания**
+Описание задания можно посмотреть тут - https://github.com/appKODE/trainee-test-frontend
 
-**Установка**
+**Для разработки использовалось: **
 
-git clone https://github.com/ohlegs/KODE_Frontend
+[React](http://reactjs.org)
 
-cd ./KODE_Frontend
-npm i
+[React-router-dom](https://reactrouter.com/docs/en/v6)
 
-npm start
+[Axios](https://axios-http.com/docs/intro)
 
 
+**Какие трудности возникли:**
+В передаче состояния «от ребёнка к родителю»
+В создании страница «2.0.3.A»
+=======
 **Описание задания**
 
 Описание задания можно посмотреть тут - https://github.com/appKODE/trainee-test-frontend
